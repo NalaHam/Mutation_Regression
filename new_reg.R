@@ -10,9 +10,12 @@ rep_mut <- filter(full_mut_count, Project %in% c("TCGA-ACC", "TCGA-BLCA",
                                                     "TCGA-PAAD", "TCGA-SKCM"))
 
 
-rep_mut$total_mut <- rowSums(rep_mut[,3:14], na.rm = TRUE)
+rep_mut$total_mut <- rowSums(rep_mut[,3:14], na.rm = FALSE)
 
 rep_mut <- rep_mut[, c(15,2,3,4,5,6,7,8,9,10,11,12,13,14,24,16,17,18,19,20,21,22,23)]
+
+write.csv(rep_mut, file = "reproductive_mutation_df.csv")
+
 
 no_na_rep <- rep_mut[complete.cases(rep_mut[ , 3:14]),]
 

@@ -18,7 +18,7 @@ qqnorm(res)
 qqline(res)
 #it doesn't follow the line on the ends ==> it is not normal
 
-#do a distribution plot to also check for normacy, if it is bell shaped then it is normal
+#do a distribution plot to also check for normalcy, if it is bell shaped then it is normal
 plot(density(res))
 
 #can also do a histogram to see if normally distributed
@@ -27,6 +27,21 @@ hist(eliminated$total_mut)
 #plot of residuals and normal Q-Q
 par(mfrow = c(2,2))
 plot(regmult_8)
+
+
+#new_sess
+library(moments)
+skewness(no_na_rep$total_mut, na.rm = TRUE)
+
+
+no_na_rep$log_mut <- log10(no_na_rep$total_mut) #transformed the mutations into log10() of them, can be viewed as percentages
+
+hist(no_na_rep$log_mut)
+
+
+
+
+
 
 
 
